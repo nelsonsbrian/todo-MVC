@@ -25,8 +25,9 @@ namespace ToDoList.Controllers
         public ActionResult todo()
         {
             Item newItem = new Item(Request.Form["new-item"]);
-            List<Item> allItems = new List<Item> {newItem};
-            return View("Index", allItems);
+            newItem.Save();
+            List<Item> allItems = Item.GetAll();
+            return View("todo", allItems);
         }
 
     }
